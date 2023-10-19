@@ -33,4 +33,4 @@ This is based on the OpenAI LLM and requires you to have an API key.
 5. Run on a target repo:
 
     ```bash
-    pip install -r requirements.txt
+   python main.py "path_to_repo"
