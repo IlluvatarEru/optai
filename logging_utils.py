@@ -2,17 +2,19 @@ import logging
 
 LOGGING_ENABLED = True
 
-logging.basicConfig(filename='logs.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# Configure the basic logging settings
+logging.basicConfig(filename='logs.log', format='%(asctime)s - %(levelname)s - %(message)s')
 
+# Create a logger
 logger = logging.getLogger()
-logger.setLevel(logging.INFO)  # Set the logging level to INFO or any desired level
+logger.setLevel(logging.NOTSET)  # Set the logger's level to NOTSET
 
-# Create a console handler and set the level to INFO or the desired level
+# Create a console handler and set its level to NOTSET to capture all log messages
 console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
+console_handler.setLevel(logging.NOTSET)
 
 # Create a formatter and attach it to the console handler
-formatter = logging.Formatter('%(asctime)s -%(levelname)s - %(message)s')
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
 
 # Add the console handler to the logger
