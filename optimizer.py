@@ -33,11 +33,12 @@ def rewrite_file_with_open_ai(file_path, perf_only=False, language="python"):
 
 
 def get_instructions(perf_only, language="python"):
-    if perf_only:
-        instructions = f"Please rewrite the following {language} code, only to optimize performance. Leave all naming unchanged."
-    else:
-        instructions = f"Please rewrite the following {language} code, optimize performance, tidy up Python code, improve variable naming and formatting. Leave constants (upper case variables) and function names unchanged."
-    return instructions
+    mode = (
+        "only to optimize performance"
+        if perf_only
+        else "optimize performance, tidy up Python code, improve variable naming and formatting"
+    )
+    return f"Please rewrite the following {language} code, {mode}. Leave constants (upper case variables) and function names unchanged."
 
 
 def rewrite_function_with_open_ai(code_block, perf_only=False, language="python"):

@@ -24,12 +24,11 @@ def main():
 
         if os.path.isdir(repo_path):
             for root_dir, _, files in os.walk(repo_path):
-                for file in files:
-                    if file.endswith(".py"):
-                        file_path = os.path.join(root_dir, file)
-                        rewrite_file_with_open_ai(
-                            file_path, perf_only, language="python"
-                        )
+                for file in (f for f in files if f.endswith(".py")):
+                    file_path = os.path.join(root_dir, file)
+                    rewrite_file_with_open_ai(
+                        file_path, perf_only, language="python"
+                    )
     except Exception as err:
         logger.exception(err)
 
