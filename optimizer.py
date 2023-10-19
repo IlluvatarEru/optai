@@ -4,7 +4,7 @@ from open_ai import get_answer
 DEF_ = "def "
 
 
-def rewrite_file_with_open_ai(file_path):
+def rewrite_file_with_open_ai(file_path, perf_only=False, language="python"):
     log_text(f"Rewriting {file_path}...")
 
     with open(file_path, "r") as read_file:
@@ -19,7 +19,7 @@ def rewrite_file_with_open_ai(file_path):
         log_text(f"Base function:\n{func_part}")
 
         # Use the OpenAI API to rewrite the function code
-        revised_func = rewrite_function_with_open_ai(func_part)
+        revised_func = rewrite_function_with_open_ai(func_part, perf_only=perf_only, language=language)
         log_text(revised_func)
         log_text("------")
         original_content = original_content.replace(func_part, revised_func)
@@ -30,14 +30,23 @@ def rewrite_file_with_open_ai(file_path):
     log_text(f"Finished rewriting {file_path}")
 
 
-def rewrite_function_with_open_ai(code_block, language="python"):
+def get_instructions(perf_only, language="python"):
+    if perf_only:
+        instructions = f"Please rewrite the following {language} code, only to optimize performance. Leave all naming unchanged."
+    else:
+        instructions = f"Please rewrite the following {language} code, optimize performance, tidy up Python code, improve variable naming and formatting. Leave constants (upper case variables) and function names unchanged."
+    return instructions
+
+
+def rewrite_function_with_open_ai(code_block, perf_only=False, language="python"):
     function_declaration = code_block.split("(")[0] + "("
     log_text(f"Function declaration = {function_declaration}")
+    instructions = get_instructions(perf_only, language)
 
     prompts_data = [
         {
             "role": "system",
-            "content": f"Please rewrite the following {language} code, optimize performance, tidy up Python code, improve variable naming and formatting. Leave constants (upper case variables) and function names unchanged.",
+            "content": instructions,
         },
         {"role": "user", "content": code_block},
     ]
