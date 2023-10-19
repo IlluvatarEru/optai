@@ -13,6 +13,7 @@ def rewrite_file_with_open_ai(file_path):
     functions = [DEF_ + e for e in code.split(DEF_)[1:]]
 
     for func in functions:
+        func = func.split('\nif __name__ == "__main__":')[0]
         log_text(f"base func:\n{func}")
 
         # Call the OpenAI API to rewrite the function code
