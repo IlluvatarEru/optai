@@ -30,10 +30,17 @@ This is based on the OpenAI LLM and requires you to have an API key.
 
    echo 'export OPEN_AI_ORG="YOUR_ORGA"'>> .env
 
-5. Run on a target repo:
+4. Add Optai to `bashrc`:
+
+   ```bash
+   path_to_repo=$(pwd)
+   echo 'alias optai="$path_to_repo/optai.bash"' >> ~/.bashrc
+   source ~/.bashrc
+
+6. Run on a target repo:
 
     ```bash
-   python main.py "path_to_repo"
+   optai "path_to_repo"
 
 ## What's next?
 We plan on: 

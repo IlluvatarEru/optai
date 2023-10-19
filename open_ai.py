@@ -10,9 +10,8 @@ openai.organization = os.environ.get("OPEN_AI_ORG")
 
 def get_answer(messages):
     response = openai.ChatCompletion.create(
-        #model="gpt-3.5-turbo",
+        # model="gpt-3.5-turbo",
         model="gpt-4",
         messages=messages,
     )
     return response.choices[0].message.content
-
