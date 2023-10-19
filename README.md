@@ -41,6 +41,8 @@ This is based on the OpenAI LLM and requires you to have an API key.
 
     ```bash
    optai "path_to_repo"
+   ```
+   You can add the flag `--opti-only` to ask it to just optimize the performance of the code rather than to also improve the variable naming, formatting etc.
 
 ## What's next?
 We plan on: 
