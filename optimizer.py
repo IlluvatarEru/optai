@@ -19,7 +19,9 @@ def rewrite_file_with_open_ai(file_path, perf_only=False, language="python"):
         log_text(f"Base function:\n{func_part}")
 
         # Use the OpenAI API to rewrite the function code
-        revised_func = rewrite_function_with_open_ai(func_part, perf_only=perf_only, language=language)
+        revised_func = rewrite_function_with_open_ai(
+            func_part, perf_only=perf_only, language=language
+        )
         log_text(revised_func)
         log_text("------")
         original_content = original_content.replace(func_part, revised_func)
