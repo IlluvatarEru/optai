@@ -34,3 +34,10 @@ This is based on the OpenAI LLM and requires you to have an API key.
 
     ```bash
    python main.py "path_to_repo"
+
+## What's next?
+We plan on: 
+- enabling this repo to work on most languages
+- rewriting it in rust so that it is faster
+- improving the rewriting quality
+- making it work with local models rather than only OpenAI

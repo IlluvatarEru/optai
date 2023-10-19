@@ -28,13 +28,14 @@ def rewrite_file_with_open_ai(file_path):
     log_text(f"Finished rewriting {file_path}")
 
 
-def rewrite_function_with_open_ai(code):
+def rewrite_function_with_open_ai(code, language="python"):
     # we keep func names unchanged
     func_name = code.split("(")[0] + "("
     log_text(f"func_name={func_name}")
 
     messages = [
-        {"role": "system", "content": "Please rewrite the following Python code to clean and optimize it."},
+        {"role": "system",
+         "content": f"Please rewrite the following {language} code, optimize performance, clean python code, improve variable naming and formatting. Leave constant (upper case variables) and function names unchanged."},
         {"role": "user", "content": code},
     ]
 
