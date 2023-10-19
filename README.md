@@ -33,16 +33,19 @@ This is based on the OpenAI LLM and requires you to have an API key.
 4. Add Optai to `bashrc`:
 
    ```bash
-   path_to_repo=$(pwd)
-   echo 'alias optai="$path_to_repo/optai.bash"' >> ~/.bashrc
+   OPTAI_PATH=$(pwd)
+   echo 'alias optai="$OPTAI_PATH/optai.bash"' >> ~/.bashrc
+   echo 'export OPTAI_PATH=$OPTAI_PATH'>> ~/.bashrc
    source ~/.bashrc
 
-6. Run on a target repo:
+5. Run on a target repo:
 
     ```bash
    optai "path_to_repo"
    ```
-   You can add the flag `--opti-only` to ask it to just optimize the performance of the code rather than to also improve the variable naming, formatting etc.
+Flags:
+   - You can add the flag `--opti-only` to ask it to just optimize the performance of the code rather than to also improve the variable naming, formatting etc.
+   - You can add the flag `--file=<file_name>` to ask it to only process a single file
 
 ## What's next?
 We plan on: 
